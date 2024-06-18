@@ -5,6 +5,8 @@
 
 int registro()
 {
+	setlocale(LC_ALL, "Portuguese"); // Definindo a linguagem
+	
 	char arquivo[40];
     char cpf[40];
     char nome[40];
@@ -86,6 +88,7 @@ int consulta()
 
 int deletar()
 {
+	setlocale(LC_ALL, "Portuguese"); // Definindo a linguagem
 	char cpf[40];
 	
 	printf("Digite o CPF do usuário a ser deletado:");
@@ -117,13 +120,23 @@ int main()
 {  
     int opcao=0; //Definindo variáveis
     int laco=1;
+    char senhadigitada[10]="a";
+    int comparacao;
     
-    for(laco=1;laco=1;)
-    {
-       system("cls");
-       
-	   setlocale(LC_ALL, "Portuguese"); // Definindo a linguagem
-	 
+	 setlocale(LC_ALL, "Portuguese"); // Definindo a linguagem
+    
+	printf("###Cartório da EBAC###\n\n"); //Inicio do menu
+	printf("Login de administrador!\n\nDigite a sua senha:\n ");
+	scanf("%s",senhadigitada);
+	
+	comparacao = strcmp(senhadigitada, "admin");
+	
+	if(comparacao == 0)
+   { 
+	   system("cls");
+       for(laco=1;laco=1;)
+      {  
+	   setlocale(LC_ALL, "Portuguese"); // Definindo a linguagem       
 	   printf("###Cartório da EBAC###\n\n"); //Inicio do menu
 	   printf("Escolha a opção desejeda no menu:\n\n");
 	   printf("\t1 - Registrar nomes\n");
@@ -137,29 +150,32 @@ int main()
        system("cls");
        
        switch(opcao)
-        {
-    	case 1:
-		registro();
-	    break;
+         {
+    	   case 1:
+		    registro();
+	        break;
 	    
-		case 2:
-	    consulta();
-	    break;
+		   case 2:
+	        consulta();
+	        break;
 	   
-	    case 3:
-	    deletar();
-		break;
+	       case 3:
+	        deletar();
+		    break;
 		
-		case 4:
-		printf("Obrigado por utilizar o sistema!\n");
-		return 0;
-		break;
+		   case 4:
+		    printf("Obrigado por utilizar o sistema!\n");
+		    return 0;
+		    break;
 		
-		default:
-		printf("Essa opção não está disponivel!\n");
-	    system("pause");
-		break;	
-     	}
-     
+		   default:
+		    printf("Essa opção não está disponivel!\n");
+	        system("pause");
+		    break;	
+     	 }
+       }
     }
+    else
+       printf("Senha incorreta!");
 }   
+   
